@@ -1,0 +1,33 @@
+parsecsv():
+  open csvfile:
+    Print machine name
+    Construct NTM
+  return NTM
+
+NTM:
+  transition_function->
+    dict(2tuple: 3tuple)
+        > (curr_state, curr_input) : (next_state, new_char, direction)
+
+  self.solve():
+    start queue as intial state with depth of 0
+    loop:
+      Pop from queue to get current configuration
+      Check if current state is accept state
+      Check if current state is reject state
+      Check if we have exceeded our max depth
+      Index transition_function by (curr_state, curr_input):
+        Get out list of available transitions
+        Append each to available_transitions queue
+        assign each transition a depth of current depth + 1
+      
+      
+      
+      
+    
+
+
+main():
+  tape = Get tape from stdin
+  NTM = parsecsv()
+  NTM.solve(tape)

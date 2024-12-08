@@ -1,0 +1,8 @@
+{ w#w | w in {a,b}* }
+list of states
+a,b,#
+a,b,#,x,_
+q1
+qaccept
+qreject
+q1,

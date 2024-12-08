@@ -1,0 +1,8 @@
+machine name
+list of states
+sigma chars
+gamma chars
+start state
+accept state
+reject state
+state transitions...
