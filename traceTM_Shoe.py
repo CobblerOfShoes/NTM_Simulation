@@ -9,7 +9,10 @@ class Tape():
   def __init__(self, tapeString="", blankSymbol="_"):
     # We use a dict and not an array so we can more easily lengthen the tape
     self.__blank_symbol = blankSymbol
-    tape_dict = dict(enumerate(tapeString))
+    if tapeString == "":
+      tape_dict = {0: blankSymbol}
+    else:
+      tape_dict = dict(enumerate(tapeString))
     self.__tape = defaultdict(lambda: self.__blank_symbol)
     for key, value in tape_dict.items():
       self.__tape[key] = value
@@ -28,6 +31,8 @@ class Tape():
       s = ""
       for i in range(index+1, len(self.__tape)):
         s += self.__tape[i]
+      if s == "":
+        s = self.__blank_symbol
       return s
     else:
       return self.__blank_symbol
@@ -67,7 +72,7 @@ class NTM_Configuration():
                head_position: int,
                current_state: str,
                previous_states: list = [],
-               depth: int = 0):
+               depth: int = 1):
     self.tape = tape
     self.head_position = head_position
     self.current_state = current_state
@@ -82,6 +87,13 @@ class NTM_Configuration():
   
   def getRightOfHead(self):
     return self.tape.getRightOfCharacter(self.head_position)
+  
+  def __str__(self):
+    return (f"Left of head: {self.getLeftOfHead():<15} | " + \
+            f"State: {self.current_state:<10} | " + \
+            f"Head Character: {self.getHeadCharacter():<3} | " + \
+            f"Right of head: {self.getRightOfHead():<15} | " + \
+            f"Depth: {self.depth}")
 
 class NTM():
   def __init__(self,
@@ -107,18 +119,11 @@ class NTM():
   
   # Returns a list of possible transitions available from a given state and input
   def __get_transitions(self, current_state, current_char):
-    # transitions = self.__transition_function[(current_state, current_char)]
-    # # If no transition available, assume it goes to the reject state
-    # if transitions == []:
-    #   return [(self.__reject_state, current_char, 'R')]
-    # return transitions
-
-    
-    try:
-      return self.__transition_function[(current_state, current_char)]
-    # If no transition available, assume it goes to the reject state
-    except IndexError:
-      return [(self.__reject_state, current_char, 'R')]
+    transitions = self.__transition_function[(current_state, current_char)]
+    # If no transition available, assume it goes to the reject state and stays put
+    if transitions == []:
+      return [NTM_Transition(self.__reject_state, current_char, 'S')]
+    return transitions
 
   def __accept(self, final_config: NTM_Configuration):
     print()
@@ -126,14 +131,14 @@ class NTM():
     total_transitions = sum(self.__nondeterminism.values())
     print(f"Total number of transitions simulated: {total_transitions}")
     avg_nondeterminism = total_transitions / len(self.__nondeterminism)
-    print(f"Average non-determinism: {avg_nondeterminism}")
+    print(f"Average non-determinism: {avg_nondeterminism:.2f}")
     print("")
     print(f"--- Configuration History ---")
+    # Print out previous steps
     for config in final_config.previous_states:
-      print(f"Left of head: {config.getLeftOfHead()} | " + \
-            f"State: {config.current_state} | " + \
-            f"Head Character: {config.getHeadCharacter()} | " + \
-            f"Right of head: {config.getRightOfHead()}")      
+      print(config)
+    # Print final step
+    print(final_config)
 
   def __reject(self, final_config: NTM_Configuration):
     print()
@@ -150,7 +155,7 @@ class NTM():
     direction = transition.direction.upper()
     if direction == "R":
       new_configuration.head_position += 1
-    else:
+    elif direction == "L":
       new_configuration.head_position -= 1
     new_configuration.previous_states.append(configuration)
     new_configuration.depth += 1
@@ -158,7 +163,8 @@ class NTM():
 
   # Get all the possible next states from the state at the top of the queue
   def __step(self, verbose):
-    next_configuration = self.__next_configurations.pop()
+    # Get the first available configuration from the queue
+    next_configuration = self.__next_configurations.pop(0)
 
     # Set a max depth to avoid infinite recursion
     if next_configuration.depth >= self.__max_depth:
@@ -167,13 +173,9 @@ class NTM():
       print(f"ERROR: Maximum traversal depth of {self.__max_depth} exceeded.")
       sys.exit(1)
 
-    # Print out intermediary steps
+    # Print out intermediary configurations
     if verbose:
-      print(f"Left of head: {next_configuration.getLeftOfHead()} | " + \
-            f"State: {next_configuration.current_state} | " + \
-            f"Head Character: {next_configuration.getHeadCharacter()} | " + \
-            f"Right of head: {next_configuration.getRightOfHead()} | " + \
-            f"Depth: {next_configuration.depth}")
+      print(next_configuration)
 
     # Increment the nondeterminism counter
     self.__nondeterminism[next_configuration.depth] += 1
@@ -183,23 +185,28 @@ class NTM():
       self.__searching = False
       self.__accept(next_configuration)
 
+    # If we are in the reject state, this branch is a dead end and we look elsewhere
     elif next_configuration.current_state == self.__reject_state:
+      # If we no longer have anywhere to go, reject the string
+      if self.__next_configurations == []:
+        self.__searching = False
+        self.__reject(next_configuration)
+      return
+
+    # Get all possible transitions available from our current configuration
+    choices: list[NTM_Transition] = self.__get_transitions(next_configuration.current_state, next_configuration.getHeadCharacter())
+
+    # Generate next configurations by applying all available transitions to our current configuration
+    available_transitions = [self.__apply_transition(next_configuration, choice) for choice in choices]
+    self.__next_configurations.extend(available_transitions)
+
+    # If we no longer have future configurations available, reject the string
+    if self.__next_configurations == []:
       self.__searching = False
       self.__reject(next_configuration)
 
-    choices: NTM_Transition = self.__get_transitions(next_configuration.current_state, next_configuration.getHeadCharacter())
-
-    # Generate next configurations from available transitions
-
-    available_transitions = [self.__apply_transition(next_configuration, choice) for choice in choices]
-
-    self.__next_configurations.extend(available_transitions)
-    
-  def set_depth(self, new_depth: int):
-    self.__max_depth = new_depth
-
   def solve(self, tape: str, verbose):
-    # Construct first transition
+    # Construct first configuration and add to the queue
     starting_configuration = NTM_Configuration(Tape(tape), 0, self.__initial_state)
     self.__next_configurations.append(starting_configuration)
 
@@ -207,8 +214,13 @@ class NTM():
       print()
       print("--- Intermediary Steps ---")
 
+    # Search the tree of possible future configurations/transitions
     while self.__searching:
       next_configuration = self.__step(verbose)
+
+  # Set the maximum searching depth for the NTM
+  def set_depth(self, new_depth: int):
+    self.__max_depth = new_depth
 
 def parseMachineFile(filepath):
   with open(filepath, 'r') as machinefile:
