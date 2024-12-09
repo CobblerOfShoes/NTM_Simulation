@@ -1,0 +1,90 @@
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: Forced loop on (a U b)* [Nondeterministic]
+Input string: aabb
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: abb             | Depth: 0
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 1
+Left of head: a               | State: q1         | Head Character: a   | Right of head: bb              | Depth: 1
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 2
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 2
+Left of head:                 | State: q0         | Head Character: a   | Right of head: abb             | Depth: 2
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 2
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 3
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 3
+Left of head: a               | State: q1         | Head Character: a   | Right of head: bb              | Depth: 3
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 3
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 3
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head:                 | State: q0         | Head Character: a   | Right of head: abb             | Depth: 4
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aa              | State: q1         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q0         | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aabb            | State: q0         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: q1         | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: a               | State: q1         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: a               | State: q0         | Head Character: a   | Right of head: bb              | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q0         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aab             | State: q1         | Head Character: b   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: aabb            | State: qreject    | Head Character: _   | Right of head: _               | Depth: 5
+
+ERROR: Maximum traversal depth of 5 exceeded.
+
+String rejected in 6 transitions.
+Total number of transitions simulated: 77
+Average non-determinism: 15.40

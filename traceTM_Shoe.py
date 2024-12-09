@@ -170,10 +170,11 @@ class NTM():
     next_configuration = self.__next_configurations.pop(0)
 
     # Set a max depth to avoid infinite recursion
-    if next_configuration.depth >= self.__max_depth:
+    if next_configuration.depth > self.__max_depth:
       self.__searching = False
       print()
       print(f"ERROR: Maximum traversal depth of {self.__max_depth} exceeded.")
+      self.__reject(next_configuration)
       sys.exit(1)
 
     # Print out intermediary configurations
