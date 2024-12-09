@@ -1,0 +1,11 @@
+{ w | w in aba* } [Deterministic]
+q0,q1,q2,q3
+a,b
+a,b,_
+q0
+q3
+qreject
+q0,a,q1,a,R
+q1,b,q2,b,R
+q2,a,q2,a,R
+q2,_,q3,_,R

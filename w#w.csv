@@ -1,8 +1,12 @@
 { w#w | w in {a,b}* }
-list of states
+q0, have1, match1, have0, match0, back, check, accept
 a,b,#
 a,b,#,x,_
-q1
+q0
 qaccept
 qreject
-q1,
+q0,#,check,#,R
+q0,1,have1,_,R
+q0,0,have0,_,R
+have1,0,have1,0,R
+have1,1,have1,1,R

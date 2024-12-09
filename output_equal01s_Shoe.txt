@@ -1,0 +1,199 @@
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: a plus [Nondeterministic]
+Input string: 
+
+--- Intermediary Steps ---
+Left of head:                 | State: q1         | Head Character: _   | Right of head: _               | Depth: 0
+Left of head:                 | State: qreject    | Head Character: _   | Right of head: _               | Depth: 1
+
+String rejected in 1 transitions.
+Total number of transitions simulated: 1
+Average non-determinism: 1.00
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: a plus [Nondeterministic]
+Input string: a
+
+--- Intermediary Steps ---
+Left of head:                 | State: q1         | Head Character: a   | Right of head: _               | Depth: 0
+Left of head: a               | State: q1         | Head Character: _   | Right of head: _               | Depth: 1
+Left of head: a               | State: q2         | Head Character: _   | Right of head: _               | Depth: 1
+Left of head: a               | State: qreject    | Head Character: _   | Right of head: _               | Depth: 2
+Left of head:                 | State: q3         | Head Character: a   | Right of head: _               | Depth: 2
+
+String accepted in 2 transitions.
+Total number of transitions simulated: 4
+Average non-determinism: 2.00
+
+--- Configuration History ---
+Left of head:                 | State: q1         | Head Character: a   | Right of head: _               | Depth: 0
+Left of head: a               | State: q2         | Head Character: _   | Right of head: _               | Depth: 1
+Left of head:                 | State: q3         | Head Character: a   | Right of head: _               | Depth: 2
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: a plus [Nondeterministic]
+Input string: aaa
+
+--- Intermediary Steps ---
+Left of head:                 | State: q1         | Head Character: a   | Right of head: aa              | Depth: 0
+Left of head: a               | State: q1         | Head Character: a   | Right of head: a               | Depth: 1
+Left of head: a               | State: q2         | Head Character: a   | Right of head: a               | Depth: 1
+Left of head: aa              | State: q1         | Head Character: a   | Right of head: _               | Depth: 2
+Left of head: aa              | State: q2         | Head Character: a   | Right of head: _               | Depth: 2
+Left of head: a               | State: qreject    | Head Character: a   | Right of head: a               | Depth: 2
+Left of head: aaa             | State: q1         | Head Character: _   | Right of head: _               | Depth: 3
+Left of head: aaa             | State: q2         | Head Character: _   | Right of head: _               | Depth: 3
+Left of head: aa              | State: qreject    | Head Character: a   | Right of head: _               | Depth: 3
+Left of head: aaa             | State: qreject    | Head Character: _   | Right of head: _               | Depth: 4
+Left of head: aa              | State: q3         | Head Character: a   | Right of head: _               | Depth: 4
+
+String accepted in 4 transitions.
+Total number of transitions simulated: 10
+Average non-determinism: 2.50
+
+--- Configuration History ---
+Left of head:                 | State: q1         | Head Character: a   | Right of head: aa              | Depth: 0
+Left of head: a               | State: q1         | Head Character: a   | Right of head: a               | Depth: 1
+Left of head: aa              | State: q1         | Head Character: a   | Right of head: _               | Depth: 2
+Left of head: aaa             | State: q2         | Head Character: _   | Right of head: _               | Depth: 3
+Left of head: aa              | State: q3         | Head Character: a   | Right of head: _               | Depth: 4
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: a plus [Nondeterministic]
+Input string: aaabb
+
+--- Intermediary Steps ---
+Left of head:                 | State: q1         | Head Character: a   | Right of head: aabb            | Depth: 0
+Left of head: a               | State: q1         | Head Character: a   | Right of head: abb             | Depth: 1
+Left of head: a               | State: q2         | Head Character: a   | Right of head: abb             | Depth: 1
+Left of head: aa              | State: q1         | Head Character: a   | Right of head: bb              | Depth: 2
+Left of head: aa              | State: q2         | Head Character: a   | Right of head: bb              | Depth: 2
+Left of head: a               | State: qreject    | Head Character: a   | Right of head: abb             | Depth: 2
+Left of head: aaa             | State: q1         | Head Character: b   | Right of head: b               | Depth: 3
+Left of head: aaa             | State: q2         | Head Character: b   | Right of head: b               | Depth: 3
+Left of head: aa              | State: qreject    | Head Character: a   | Right of head: bb              | Depth: 3
+Left of head: aaa             | State: qreject    | Head Character: b   | Right of head: b               | Depth: 4
+Left of head: aaa             | State: qreject    | Head Character: b   | Right of head: b               | Depth: 4
+
+String rejected in 4 transitions.
+Total number of transitions simulated: 10
+Average non-determinism: 2.50
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: {w | w has the same number of 0's and 1's} Nondeterministic							
+Input string: 
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: _   | Right of head: _               | Depth: 0
+Left of head: _               | State: qacc       | Head Character: _   | Right of head: _               | Depth: 1
+
+String accepted in 1 transitions.
+Total number of transitions simulated: 1
+Average non-determinism: 1.00
+
+--- Configuration History ---
+Left of head:                 | State: q0         | Head Character: _   | Right of head: _               | Depth: 0
+Left of head: _               | State: qacc       | Head Character: _   | Right of head: _               | Depth: 1
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: {w | w has the same number of 0's and 1's} Nondeterministic							
+Input string: 011
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: 0   | Right of head: 11              | Depth: 0
+Left of head: _               | State: q1         | Head Character: 1   | Right of head: 1               | Depth: 1
+Left of head:                 | State: q3         | Head Character: _   | Right of head: x1              | Depth: 2
+Left of head: _               | State: q4         | Head Character: x   | Right of head: 1               | Depth: 3
+Left of head: _               | State: q5         | Head Character: x   | Right of head: 1               | Depth: 3
+Left of head: _x              | State: q4         | Head Character: 1   | Right of head: _               | Depth: 4
+Left of head: _x              | State: q5         | Head Character: 1   | Right of head: _               | Depth: 4
+Left of head: _xx             | State: q2         | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: _x              | State: qrej       | Head Character: 1   | Right of head: _               | Depth: 5
+Left of head: _xx             | State: qrej       | Head Character: _   | Right of head: _               | Depth: 6
+
+String rejected in 6 transitions.
+Total number of transitions simulated: 9
+Average non-determinism: 1.50
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: {w | w has the same number of 0's and 1's} Nondeterministic							
+Input string: 0101
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: 0   | Right of head: 101             | Depth: 0
+Left of head: _               | State: q1         | Head Character: 1   | Right of head: 01              | Depth: 1
+Left of head:                 | State: q3         | Head Character: _   | Right of head: x01             | Depth: 2
+Left of head: _               | State: q4         | Head Character: x   | Right of head: 01              | Depth: 3
+Left of head: _               | State: q5         | Head Character: x   | Right of head: 01              | Depth: 3
+Left of head: _x              | State: q4         | Head Character: 0   | Right of head: 1               | Depth: 4
+Left of head: _x              | State: q5         | Head Character: 0   | Right of head: 1               | Depth: 4
+Left of head: _xx             | State: q1         | Head Character: 1   | Right of head: _               | Depth: 5
+Left of head: _x              | State: qrej       | Head Character: 0   | Right of head: 1               | Depth: 5
+Left of head: _x              | State: q3         | Head Character: x   | Right of head: x               | Depth: 6
+Left of head: _               | State: q3         | Head Character: x   | Right of head: xx              | Depth: 7
+Left of head:                 | State: q3         | Head Character: _   | Right of head: xxx             | Depth: 8
+Left of head: _               | State: q4         | Head Character: x   | Right of head: xx              | Depth: 9
+Left of head: _               | State: q5         | Head Character: x   | Right of head: xx              | Depth: 9
+Left of head: _x              | State: q4         | Head Character: x   | Right of head: x               | Depth: 10
+Left of head: _x              | State: q5         | Head Character: x   | Right of head: x               | Depth: 10
+Left of head: _xx             | State: q4         | Head Character: x   | Right of head: _               | Depth: 11
+Left of head: _xx             | State: q5         | Head Character: x   | Right of head: _               | Depth: 11
+Left of head: _xxx            | State: q4         | Head Character: _   | Right of head: _               | Depth: 12
+Left of head: _xxx            | State: q5         | Head Character: _   | Right of head: _               | Depth: 12
+Left of head: _xx             | State: q3         | Head Character: x   | Right of head: _               | Depth: 13
+Left of head: _xxx_           | State: qacc       | Head Character: _   | Right of head: _               | Depth: 13
+
+String accepted in 13 transitions.
+Total number of transitions simulated: 21
+Average non-determinism: 1.62
+
+--- Configuration History ---
+Left of head:                 | State: q0         | Head Character: 0   | Right of head: 101             | Depth: 0
+Left of head: _               | State: q1         | Head Character: 1   | Right of head: 01              | Depth: 1
+Left of head:                 | State: q3         | Head Character: _   | Right of head: x01             | Depth: 2
+Left of head: _               | State: q4         | Head Character: x   | Right of head: 01              | Depth: 3
+Left of head: _x              | State: q4         | Head Character: 0   | Right of head: 1               | Depth: 4
+Left of head: _xx             | State: q1         | Head Character: 1   | Right of head: _               | Depth: 5
+Left of head: _x              | State: q3         | Head Character: x   | Right of head: x               | Depth: 6
+Left of head: _               | State: q3         | Head Character: x   | Right of head: xx              | Depth: 7
+Left of head:                 | State: q3         | Head Character: _   | Right of head: xxx             | Depth: 8
+Left of head: _               | State: q5         | Head Character: x   | Right of head: xx              | Depth: 9
+Left of head: _x              | State: q5         | Head Character: x   | Right of head: x               | Depth: 10
+Left of head: _xx             | State: q5         | Head Character: x   | Right of head: _               | Depth: 11
+Left of head: _xxx            | State: q5         | Head Character: _   | Right of head: _               | Depth: 12
+Left of head: _xxx_           | State: qacc       | Head Character: _   | Right of head: _               | Depth: 13
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: {w | w has the same number of 0's and 1's} Nondeterministic							
+Input string: 10001
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: 1   | Right of head: 0001            | Depth: 0
+Left of head: _               | State: q2         | Head Character: 0   | Right of head: 001             | Depth: 1
+Left of head:                 | State: q3         | Head Character: _   | Right of head: x001            | Depth: 2
+Left of head: _               | State: q4         | Head Character: x   | Right of head: 001             | Depth: 3
+Left of head: _               | State: q5         | Head Character: x   | Right of head: 001             | Depth: 3
+Left of head: _x              | State: q4         | Head Character: 0   | Right of head: 01              | Depth: 4
+Left of head: _x              | State: q5         | Head Character: 0   | Right of head: 01              | Depth: 4
+Left of head: _xx             | State: q1         | Head Character: 0   | Right of head: 1               | Depth: 5
+Left of head: _x              | State: qrej       | Head Character: 0   | Right of head: 01              | Depth: 5
+Left of head: _xx0            | State: q1         | Head Character: 1   | Right of head: _               | Depth: 6
+Left of head: _xx             | State: q3         | Head Character: 0   | Right of head: x               | Depth: 7
+Left of head: _x              | State: q3         | Head Character: x   | Right of head: 0x              | Depth: 8
+Left of head: _               | State: q3         | Head Character: x   | Right of head: x0x             | Depth: 9
+Left of head:                 | State: q3         | Head Character: _   | Right of head: xx0x            | Depth: 10
+Left of head: _               | State: q4         | Head Character: x   | Right of head: x0x             | Depth: 11
+Left of head: _               | State: q5         | Head Character: x   | Right of head: x0x             | Depth: 11
+Left of head: _x              | State: q4         | Head Character: x   | Right of head: 0x              | Depth: 12
+Left of head: _x              | State: q5         | Head Character: x   | Right of head: 0x              | Depth: 12
+Left of head: _xx             | State: q4         | Head Character: 0   | Right of head: x               | Depth: 13
+Left of head: _xx             | State: q5         | Head Character: 0   | Right of head: x               | Depth: 13
+Left of head: _xxx            | State: q1         | Head Character: x   | Right of head: _               | Depth: 14
+Left of head: _xx             | State: qrej       | Head Character: 0   | Right of head: x               | Depth: 14
+Left of head: _xxxx           | State: q1         | Head Character: _   | Right of head: _               | Depth: 15
+Left of head: _xxxx           | State: qrej       | Head Character: _   | Right of head: _               | Depth: 16
+
+String rejected in 16 transitions.
+Total number of transitions simulated: 23
+Average non-determinism: 1.44

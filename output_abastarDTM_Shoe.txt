@@ -1,0 +1,77 @@
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: { w | w in aba* } [Deterministic]
+Input string: a
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: _               | Depth: 0
+Left of head: a               | State: q1         | Head Character: _   | Right of head: _               | Depth: 1
+Left of head: a               | State: qreject    | Head Character: _   | Right of head: _               | Depth: 2
+
+String rejected in 2 transitions.
+Total number of transitions simulated: 2
+Average non-determinism: 1.00
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: { w | w in aba* } [Deterministic]
+Input string: ab
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: b               | Depth: 0
+Left of head: a               | State: q1         | Head Character: b   | Right of head: _               | Depth: 1
+Left of head: ab              | State: q2         | Head Character: _   | Right of head: _               | Depth: 2
+Left of head: ab_             | State: q3         | Head Character: _   | Right of head: _               | Depth: 3
+
+String accepted in 3 transitions.
+Total number of transitions simulated: 3
+Average non-determinism: 1.00
+
+--- Configuration History ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: b               | Depth: 0
+Left of head: a               | State: q1         | Head Character: b   | Right of head: _               | Depth: 1
+Left of head: ab              | State: q2         | Head Character: _   | Right of head: _               | Depth: 2
+Left of head: ab_             | State: q3         | Head Character: _   | Right of head: _               | Depth: 3
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: { w | w in aba* } [Deterministic]
+Input string: abaaa
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: baaa            | Depth: 0
+Left of head: a               | State: q1         | Head Character: b   | Right of head: aaa             | Depth: 1
+Left of head: ab              | State: q2         | Head Character: a   | Right of head: aa              | Depth: 2
+Left of head: aba             | State: q2         | Head Character: a   | Right of head: a               | Depth: 3
+Left of head: abaa            | State: q2         | Head Character: a   | Right of head: _               | Depth: 4
+Left of head: abaaa           | State: q2         | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: abaaa_          | State: q3         | Head Character: _   | Right of head: _               | Depth: 6
+
+String accepted in 6 transitions.
+Total number of transitions simulated: 6
+Average non-determinism: 1.00
+
+--- Configuration History ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: baaa            | Depth: 0
+Left of head: a               | State: q1         | Head Character: b   | Right of head: aaa             | Depth: 1
+Left of head: ab              | State: q2         | Head Character: a   | Right of head: aa              | Depth: 2
+Left of head: aba             | State: q2         | Head Character: a   | Right of head: a               | Depth: 3
+Left of head: abaa            | State: q2         | Head Character: a   | Right of head: _               | Depth: 4
+Left of head: abaaa           | State: q2         | Head Character: _   | Right of head: _               | Depth: 5
+Left of head: abaaa_          | State: q3         | Head Character: _   | Right of head: _               | Depth: 6
+
+------------------------------------------------------------------------------------------------------------------------
+Machine: { w | w in aba* } [Deterministic]
+Input string: abaaaab
+
+--- Intermediary Steps ---
+Left of head:                 | State: q0         | Head Character: a   | Right of head: baaaab          | Depth: 0
+Left of head: a               | State: q1         | Head Character: b   | Right of head: aaaab           | Depth: 1
+Left of head: ab              | State: q2         | Head Character: a   | Right of head: aaab            | Depth: 2
+Left of head: aba             | State: q2         | Head Character: a   | Right of head: aab             | Depth: 3
+Left of head: abaa            | State: q2         | Head Character: a   | Right of head: ab              | Depth: 4
+Left of head: abaaa           | State: q2         | Head Character: a   | Right of head: b               | Depth: 5
+Left of head: abaaaa          | State: q2         | Head Character: b   | Right of head: _               | Depth: 6
+Left of head: abaaaa          | State: qreject    | Head Character: b   | Right of head: _               | Depth: 7
+
+String rejected in 7 transitions.
+Total number of transitions simulated: 7
+Average non-determinism: 1.00

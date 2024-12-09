@@ -72,7 +72,7 @@ class NTM_Configuration():
                head_position: int,
                current_state: str,
                previous_states: list = [],
-               depth: int = 1):
+               depth: int = 0):
     self.tape = tape
     self.head_position = head_position
     self.current_state = current_state
@@ -125,13 +125,17 @@ class NTM():
       return [NTM_Transition(self.__reject_state, current_char, 'S')]
     return transitions
 
+  def __results(self, final_config: NTM_Configuration):
+    # Subtract one to account for the initial state
+    total_transitions = sum(self.__nondeterminism.values()) - 1
+    print(f"Total number of transitions simulated: {total_transitions}")
+    avg_nondeterminism = total_transitions / (len(self.__nondeterminism) - 1)
+    print(f"Average non-determinism: {avg_nondeterminism:.2f}")
+
   def __accept(self, final_config: NTM_Configuration):
     print()
     print(f"String accepted in {final_config.depth} transitions.")
-    total_transitions = sum(self.__nondeterminism.values())
-    print(f"Total number of transitions simulated: {total_transitions}")
-    avg_nondeterminism = total_transitions / len(self.__nondeterminism)
-    print(f"Average non-determinism: {avg_nondeterminism:.2f}")
+    self.__results(final_config)
     print("")
     print(f"--- Configuration History ---")
     # Print out previous steps
@@ -143,10 +147,7 @@ class NTM():
   def __reject(self, final_config: NTM_Configuration):
     print()
     print(f"String rejected in {final_config.depth} transitions.")
-    total_transitions = sum(self.__nondeterminism.values())
-    print(f"Total number of transitions simulated: {total_transitions}")
-    avg_nondeterminism = total_transitions / len(self.__nondeterminism)
-    print(f"Average non-determinism: {avg_nondeterminism}")
+    self.__results(final_config)
 
   def __apply_transition(self, configuration: NTM_Configuration, transition: NTM_Transition):
     new_configuration: NTM_Configuration = copy.deepcopy(configuration)
@@ -157,6 +158,8 @@ class NTM():
       new_configuration.head_position += 1
     elif direction == "L":
       new_configuration.head_position -= 1
+    if new_configuration.head_position < 0:
+      new_configuration.head_position = 0
     new_configuration.previous_states.append(configuration)
     new_configuration.depth += 1
     return new_configuration
@@ -206,6 +209,7 @@ class NTM():
       self.__reject(next_configuration)
 
   def solve(self, tape: str, verbose):
+    print(f"Input string: {tape}")
     # Construct first configuration and add to the queue
     starting_configuration = NTM_Configuration(Tape(tape), 0, self.__initial_state)
     self.__next_configurations.append(starting_configuration)
@@ -228,6 +232,8 @@ def parseMachineFile(filepath):
 
     # Print out the machine name
     machinename = next(machinereader)[0]
+    print()
+    print("-" * 120)
     print(f"Machine: {machinename}")
 
     # Ignore the list of states
